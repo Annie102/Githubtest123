@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="css/all.css">
 </head>
 <body>
-    <h1>123</h1>
+    <div id="text"></div>
+    <input type="number" id="num">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script>
+        console.log($);
+        const personText = '我是卡世博';
+
+        $(document).ready(function (){
+            $('#text').text(personText);
+            // $('#text')-> 取得 DOM 元素
+            // 寫入值到元素
+            $('#num').on('change', function(){ //監聽
+                console.log($(this).val());
+                // $(this) 取得DOM元素
+                // 取得值
+            })
+        })
+    </script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+<body>
+    <div id="app">
+        {{ text }}
+        {{ name }}
+        {{ num }}
+        <input type="number" v-model="num">
+        <!-- 指令 (v-) -->
+        <hr>
+        {{person.name}}
+        {{person.image}}
+        <img :src="person.image" :alt="person.name">
+        {{person.cash}}
+        <button type="button" @click="person.cash++">增加</button>
+        <i class="bi bi-gender-male" v-if="person.gender === 'male'"></i>
+        <i class="bi bi-gender-female" v-else></i>
+        <hr>
+        <ul>
+            <li v-for="item in people">
+                {{ item.name }}
+                <img :src="item.image" alt="" width="200">
+                <i class="bi bi-gender-male" v-if="item.gender === 'male'"></i>
+                <i class="bi bi-gender-female" v-else></i>
+                {{ item.cash}}
+                <button type="button" @click="clickAlert">增加</button>
+            </li>
+            
+        </ul>
+        <hr>
+        
+    </div>
+    <script>
+        //把資料拉出來
+        Vue.createApp({
+            //data 函式
+            data: function (){
+                return{
+                    text:'我是卡世博',
+                    name:'小明',
+                    num: 0,
+                    person:{
+                        name:'小明',
+                        image:'https://picsum.photos/seed/picsum/200/300',
+                        cash:1000,
+                        gender:'male',
+                    },
+                    people:[
+                        {
+                            name:'小明',
+                            image:'https://picsum.photos/seed/picsum/200/300',
+                            cash:1000,
+                            gender:'male',
+                        },
+                        {
+                            name:'漂亮阿姨',
+                            image:'https://picsum.photos/seed/picsum/200/300',
+                            cash:2000,
+                            gender:'female',
+                        },
+                        {
+                            name:'杰倫',
+                            image:'https://picsum.photos/seed/picsum/200/300',
+                            cash:3000,
+                            gender:'male',
+                        },
+                    ],
+                };
+            },
+
+            //methods 物件
+            methods:{
+                clickAlert: function(){
+                    alert('我被觸發了');
+                }
+            },
+            //mounted 函式
+            mounted: function(){
+                
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>
